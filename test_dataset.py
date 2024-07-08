@@ -113,3 +113,29 @@ class TestDataset(data.Dataset):
     def get_positives(self):
         return self.positives_per_query
 
+class DebugTestDataset(TestDataset):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.check_image_sizes()
+
+    def __getitem__(self, idx):
+        image, index = super().__getitem__(idx)
+        print(f"Image shape at index {idx}: {image.shape}")
+        return image, index
+
+    def check_image_sizes(self):
+        sizes = set()
+        different_size_images = []
+        for i in range(len(self)):
+            image, _ = super().__getitem__(i)
+            sizes.add(image.shape)
+            if image.shape != (3, 480, 640):  # Assuming the expected shape is (3, 480, 640)
+                image_path = self.database_paths[i] if i < self.num_database else self.queries_paths[i - self.num_database]
+                different_size_images.append((i, image_path, image.shape))
+        
+        print(f"Unique image sizes in dataset: {sizes}")
+        if len(sizes) > 1:
+            print("Warning: Dataset contains images of different sizes!")
+            print("Images with different dimensions:")
+            for idx, path, shape in different_size_images:
+                print(f"Index: {idx}, Path: {path}, Shape: {shape}")

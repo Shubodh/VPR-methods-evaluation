@@ -14,7 +14,7 @@ import vpr_models
 import parser
 import commons
 import visualizations
-from test_dataset import TestDataset
+from test_dataset import TestDataset#, DebugTestDataset
 
 args = parser.parse_arguments()
 start_time = datetime.now()
@@ -31,6 +31,9 @@ model = model.eval().to(args.device)
 test_ds = TestDataset(args.database_folder, args.queries_folder,
                       positive_dist_threshold=args.positive_dist_threshold,
                       image_size=args.image_size, use_labels=args.use_labels)
+# test_ds = DebugTestDataset(args.database_folder, args.queries_folder,
+#                       positive_dist_threshold=args.positive_dist_threshold,
+#                       image_size=args.image_size, use_labels=args.use_labels)
 logging.info(f"Testing on {test_ds}")
 
 with torch.inference_mode():
@@ -40,6 +43,10 @@ with torch.inference_mode():
                                       batch_size=args.batch_size)
     all_descriptors = np.empty((len(test_ds), args.descriptors_dimension), dtype="float32")
     for images, indices in tqdm(database_dataloader):
+        # Debugging 
+        # print(f"Batch indices: {indices}")
+        # print(f"Batch images shape: {[img.shape for img in images]}")
+        
         descriptors = model(images.to(args.device))
         descriptors = descriptors.cpu().numpy()
         all_descriptors[indices.numpy(), :] = descriptors

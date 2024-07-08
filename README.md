@@ -1,4 +1,11 @@
 
+
+### For MSLS  dataset
+Note the image resize option because msls has images of different sizes. 
+```
+python3 main.py --method=cosplace --backbone=ResNet18 --descriptors_dimension=512     --database_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database     --queries_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries --image_size 480 640
+```
+
 # VPR-methods-evaluation
 
 This repo is used to easily evaluate pre-trained Visual Place Recognition methods, and is released as part of the [ICCV 2023 EigenPlaces paper](https://openaccess.thecvf.com/content/ICCV2023/html/Berton_EigenPlaces_Training_Viewpoint_Robust_Models_for_Visual_Place_Recognition_ICCV_2023_paper.html).
