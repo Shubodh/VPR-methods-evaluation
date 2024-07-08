@@ -1,0 +1,7 @@
+Returning EigenPlaces model with backbone: ResNet50 with features dimension 2048
+Returning CosPlace model with backbone: ResNet50 with features dimension 512
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database with glob()
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries with glob()
+
+2024-07-08 12:55:34   R@1: 87.1, R@5: 92.8, R@10: 94.0, R@20: 95.4
+

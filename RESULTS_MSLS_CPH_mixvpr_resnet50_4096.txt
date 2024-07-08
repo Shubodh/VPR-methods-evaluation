@@ -1,0 +1,5 @@
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database with glob()
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries with glob()
+
+2024-07-08 12:58:24   R@1: 87.1, R@5: 92.4, R@10: 93.6, R@20: 94.8
+
