@@ -1,6 +1,14 @@
 
 
 ### For MSLS  dataset
+I. FOR DATASET preprocessing for MSLS dataset, you need to do following:
+Essentially Filtering msls dataset:
+1. format_mapillary_extract_npy_files.py: This takes in the npy files and writes a csv file with the image names of the images from msls those which are only used for VPR methods (like 500 query images instead of some thousands) for MSLS dataset. This csv can be used in next steps:
+2. format_mapillary_rewrite_postprocessed_csv_files.py : rewrites raw and postprocessed csv files as per the csv file generated in step 1 with name _filtered appended.
+3. format_mapillary_filtered.py
+
+
+II. Now to get results:
 Note the image resize option because msls has images of different sizes. 
 ```
 python3 main.py --method=cosplace --backbone=ResNet18 --descriptors_dimension=512     --database_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database     --queries_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries --image_size 480 640

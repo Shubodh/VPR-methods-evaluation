@@ -1,0 +1,5 @@
+Returning CosPlace model with backbone: ResNet50 with features dimension 2048
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_SF/msls/val/database with glob()
+Searching test images in /scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_SF/msls/val/queries/ with glob()
+2024-07-08 13:24:41   R@1: 93.4, R@5: 97.5, R@10: 97.9, R@20: 98.8
+
