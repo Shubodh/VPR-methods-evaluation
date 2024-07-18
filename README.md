@@ -7,12 +7,23 @@ Essentially Filtering msls dataset:
 2. format_mapillary_rewrite_postprocessed_csv_files.py : rewrites raw and postprocessed csv files as per the csv file generated in step 1 with name _filtered appended.
 3. format_mapillary_filtered.py
 
+Best config of each method from EP paper:
+- cosplace, EigenPlaces: ResNet50, 2048 (desc dim)
+- MixVPR: Resnet50, 4096
+- image size from AnyLoc (i think)
 
 II. Now to get results:
 Note the image resize option because msls has images of different sizes. 
 ```
-python3 main.py --method=cosplace --backbone=ResNet18 --descriptors_dimension=512     --database_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database     --queries_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries --image_size 480 640
+python3 main.py --method=cosplace --backbone=ResNet50 --descriptors_dimension=512     --database_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/database     --queries_folder=/scratch/saishubodh/segments_data/VPR-datasets-downloader_MSLS_CPH/msls/val/queries --image_size 480 640
 ```
+
+### for VPAir
+modify: method, backbone, descriptors_dimension within the script
+```
+python main_segvlad_format.py --database_folder=/scratch/saishubodh/segments_data/VPAir/reference_views     --queries_folder=/scratch/saishubodh/segments_data/VPAir/queries --image_size 600 800
+```
+
 
 # VPR-methods-evaluation
 
